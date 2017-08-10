@@ -52,7 +52,8 @@ router.get('/edit/:id', (req, res) => {
     })
         .then(teach => {
             res.render('edit', {
-                dataTcui: teach
+                dataTcui: teach,
+                errs: req.query.errs
             })
         })
 })
@@ -73,7 +74,7 @@ router.post('/edit/:id', (req, res) => {
             res.redirect('/student')
         })
         .catch(() => {
-            res.redirect(`/student/edit/${req.params.id}`)
+            res.redirect(`/student/edit/${req.params.id}?errs=Format Email Salah`)
         })
 })
 

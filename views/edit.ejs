@@ -28,6 +28,12 @@
     <div class="title" align=center>
 
         <h1>FORM</h1>
+                <h3 style="color:red;">
+                    <% if (errs) { %>
+                        <%= errs %>
+                            <% } %>
+                </h3>
+                <br><br>
         <form action="/student/edit/<%= dataTcui[0].id %>" method="post">
             <input type="text" name="depan" value="<%= dataTcui[0].first_name %>"><br>
             <input type="text" name="belakang" value="<%= dataTcui[0].last_name %>"><br>
