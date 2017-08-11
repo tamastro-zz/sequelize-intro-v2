@@ -7,16 +7,9 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example:
-      return queryInterface.bulkInsert('Person', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
+      return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-    return queryInterface.bulkInsert('Subjects', [{
-      subject_name: 'React JS',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }], {});
+    return queryInterface.addColumn('SubjectStudents', 'score', Sequelize.INTEGER);
   },
 
   down: function (queryInterface, Sequelize) {
@@ -25,7 +18,7 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example:
-      return queryInterface.bulkDelete('Person', null, {});
+      return queryInterface.dropTable('users');
     */
   }
 };
