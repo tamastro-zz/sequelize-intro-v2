@@ -38,11 +38,7 @@ app.use('/', index)
 
 
 
-app.use((
-  req,
-  res,
-  next
-) => {
+app.use((req,res,next) => {
   if (req.session.user.role == 'student' || 'teacher' || 'headmaster') {
     next()
   }
@@ -51,11 +47,7 @@ app.use((
   }
 })
 app.use('/student', routestudent);
-app.use((
-  req,
-  res,
-  next
-) => {
+app.use((req,res,next) => {
   if (req.session.user.role == 'teacher' || 'headmaster') {
     next()
   }

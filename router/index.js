@@ -44,6 +44,15 @@ router.post('/signup', (req, res) => {
             .then(() => {
               res.redirect('/')
             })
+            .catch(() => {
+              setup.user.create({
+                username: `${req.body.username}`,
+                password: `${req.body.password}`,
+                role: `${req.body.role}`,
+                createdAt: new Date(),
+                updatedAt: new Date()
+              })
+            })
         }
         else {
           res.redirect(`/signup?errs=Username Already Exist`)
