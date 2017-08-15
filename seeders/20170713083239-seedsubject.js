@@ -13,14 +13,18 @@ module.exports = {
       }], {});
     */
     return queryInterface.bulkInsert('Subjects', [{
-      subject_name: 'Kimia',
+      subject_name: 'Node JS',
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
-      subject_name: 'Ekonomi',
+      subject_name: 'Vue JS',
       createdAt: new Date(),
       updatedAt: new Date()
-    }], {});
+    },{
+       subject_name: 'React JS',
+       createdAt: new Date(),
+      updatedAt: new Date()
+     }], {});
   },
 
   down: function (queryInterface, Sequelize) {
