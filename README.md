@@ -1,2 +1,1 @@
-# sequelize-intro-v2
-v-2
+# Intro-Sequelize

@@ -1,48 +1,37 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+  <head>
     <meta charset="utf-8">
-    <title>ADDRESSES</title>
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
+    <title>ADD STUDENT</title>
+    <%- include layout/bootstrap %>
+  </head>
 
-        td,
-        th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="title" align=center>
+  <body>
+    <%- include layout/header %>
+      <ol class="breadcrumb" align=left>
+        <li><a href="/homepage">Homepage</a></li>
+        <li><a href="/student">Student</a></li>
+        <li class="active">Add Student</li>
+      </ol>
+      <div class="title" align=center>
         <h1>FORM</h1>
-        <h3 style="color:red;">
-            <% if (errs) { %>
-                <%= errs %>
-                    <% } %>
-        </h3>
-        <br><br>
+                <h3 style="color:red;">
+                  <% if (errs) { %>
+                    <%= errs %>
+                      <% } %>
+                </h3>
+                <br><br>
         <form action="/student/add" method="post">
-            <input type="text" name="depan" placeholder="Insert Your First name"><br>
-            <input type="text" name="belakang" placeholder="Insert Your Last name"><br>
-            <input type="text" name="email" placeholder="Insert Your email"><br>
-            <input type="submit" value="Submit">
+          <input type="text" name="depan" placeholder="Insert Your First name"><br>
+          <input type="text" name="belakang" placeholder="Insert Your Last name"><br>
+          <input type="text" name="email" placeholder="Insert Your email"><br>
+          <input type="submit" value="Submit">
         </form>
-        <br><br>
-        <a href="/student">BACK</a>
-    </div>
-</body>
+            <br><br>
+            <a href="/student" class="btn btn-primary btn-lg active">BACK</a>
+      </div>
+  </body>
 
 </html>
 </div>

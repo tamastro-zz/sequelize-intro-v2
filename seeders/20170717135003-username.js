@@ -12,11 +12,28 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('Subjects', [{
-      subject_name: 'React JS',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }], {});
+    return queryInterface.bulkInsert('users', [{
+        username: 'johnwick',
+        password: 'shelby',
+        role: 'headmaster',
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+      {
+        username: 'harryp',
+        password: 'hedwig',
+        role: 'student',
+        createdAt: new Date(),
+        updatedAt: new Date()
+    },
+      {
+        username: 'daenerys',
+        password: 'drogon',
+        role: 'teacher',
+        createdAt: new Date(),
+        updatedAt: new Date()
+    }
+      ], {});
   },
 
   down: function (queryInterface, Sequelize) {

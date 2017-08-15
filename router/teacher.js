@@ -7,13 +7,13 @@ const setup = require('../models');
 router.get('/', (req, res) => {
   setup.Teacher.findAll({
       include: [setup.Subject],
-      order: [
-        ['first_name', 'ASC']
-      ]
+      order: [['first_name', 'ASC']]
     })
     .then(teach => {
       res.render('teacher', {
-        dataTcui: teach
+        dataTcui: teach,
+        role: req.session.user.role,
+        name: req.session.user.username
       })
     })
 })
@@ -26,7 +26,9 @@ router.get('/add', (req, res) => {
           res.render('addT', {
             dataTcui: teach,
             subs: sub,
-            errs: ''
+            errs: '',
+            role: req.session.user.role,
+            name: req.session.user.username
           })
         })
     })
@@ -63,10 +65,11 @@ router.get('/edit/:id', (req, res) => {
           include: [setup.Teacher]
         })
         .then(sub => {
-          console.log(teach);
           res.render('editT', {
             dataTcui: teach,
-            subs: sub
+            subs: sub,
+            role: req.session.user.role,
+            name: req.session.user.username
           })
         })
     })

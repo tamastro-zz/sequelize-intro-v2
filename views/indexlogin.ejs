@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>SIGN IN</title>
+    <%- include layout/bootstrap %>
+      <style media="screen">
+        body {
+          background-image: url("https://dewey.tailorbrands.com/production/brand_version_mockup_image/414/229827414_e1f6d649-f775-46a4-872c-f3d54ee38ac4.png?cb=1502772580");
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-position: center bottom;
+          background-size: 30% auto;
+        }
+      </style>
+  </head>
+
+  <body>
+    <%- include layout/blank %>
+      <% if (errors) { %>
+        <section class="alert alert-danger">
+          <h2>Username is too short</h2>
+        </section>
+        <% }%>
+          <form action="/login" method="post">
+                                    <h3 style="color:red;" align=center>
+                                      <% if (errs) { %>
+                                        <%= errs %>
+                                          <% } %>
+                                    </h3>
+                                    <br>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Username</label>
+              <input type="text" class="form-control" name="username" placeholder="username">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-default">Log In</button>
+          </form>
+
+  </body>
+
+</html>

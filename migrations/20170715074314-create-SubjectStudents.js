@@ -1,6 +1,6 @@
 'use strict';
 module.exports = {
-  up: function(queryInterface, Sequelize) {
+  up: function (queryInterface, Sequelize) {
     return queryInterface.createTable('SubjectStudents', {
       id: {
         allowNull: false,
@@ -8,10 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      subject_id: {
+      SubjectId: {
         type: Sequelize.INTEGER
       },
-      student_id: {
+      StudentId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -24,7 +24,7 @@ module.exports = {
       }
     });
   },
-  down: function(queryInterface, Sequelize) {
+  down: function (queryInterface, Sequelize) {
     return queryInterface.dropTable('SubjectStudents');
   }
 };

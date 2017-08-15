@@ -1,55 +1,63 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+  <head>
     <meta charset="utf-8">
-    <title></title>
-</head>
+    <title>TEACHER</title>
+    <%- include layout/bootstrap %>
+  </head>
 
-<body align=center>
+  <body>
+    <%- include layout/header %>
+      <ol class="breadcrumb" align=left>
+        <li><a href="/homepage">Homepage</a></li>
+        <li class="active">Teacher</li>
+      </ol>
 
-    <table align=center>
+      <table class="table table-hover">
         <tr>
-            <th>ID</th>
-            <th>NAMA DEPAN</th>
-            <th>NAMA BELAKANG</th>
-            <th>EMAIL</th>
-            <th>SUBJECT</th>
+          <th>ID</th>
+          <th>NAMA DEPAN</th>
+          <th>NAMA BELAKANG</th>
+          <th>EMAIL</th>
+          <th>SUBJECT</th>
         </tr>
-        <% dataTcui.forEach( cont => { %>
+        <% var x = 1%>
+          <% dataTcui.forEach( cont => { %>
             <tr>
+              <td>
+                <%= x++ %>
+              </td>
+              <td>
+                <%= cont.first_name %>
+              </td>
+              <td>
+                <%= cont.last_name %>
+              </td>
+              <td>
+                <%= cont.email %>
+              </td>
+              <%if (cont.SubjectId !== null) {%>
                 <td>
-                    <%= cont.id %>
+                  <%=cont.Subject.subject_name%>
                 </td>
-                <td>
-                    <%= cont.first_name %>
-                </td>
-                <td>
-                    <%= cont.last_name %>
-                </td>
-                <td>
-                    <%= cont.email %>
-                </td>
-                <%if (cont.SubjectId !== null) {%>
-                    <td>
-                        <%=cont.Subject.subject_name%>
-                    </td>
-                    <%} else {%>
-                        <td>
-                            unassigned
-                        </td>
-                        <%}%>
-                            <td><a href="/teacher/edit/<%= cont.id %>">EDIT</a></td>
-                            <td><a href="/teacher/delete/<%= cont.id %>" onclick="return confirm('Are you sure?')">DELETE</a></td>
+                <%} else {%>
+                  <td>
+                    unassigned
+                  </td>
+                  <%}%>
+                    <td><a href="/teacher/edit/<%= cont.id %>">EDIT</a></td>
+                    <td><a href="/teacher/delete/<%= cont.id %>" onclick="return confirm('Are you sure?')">DELETE</a></td>
             </tr>
             <% }) %>
-    </table>
+      </table>
+      <div align=center>
+        <br><a href="/teacher/add" class="btn btn-primary btn-lg active">ADD TEACHER</a>
+        <br><br><br>
 
-    <br>
-    <button type="button" name="button"><a href="/teacher/add">ADD MEMBER</a></button>
-    <br><br><br>
-    <a href="/">BACK</a>
+        <a href="/homepage" class="btn btn-primary btn-lg active">BACK</a>
+      </div>
 
-</body>
+  </body>
 
 </html>

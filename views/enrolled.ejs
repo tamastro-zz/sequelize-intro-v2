@@ -1,57 +1,56 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+  <head>
     <meta charset="utf-8">
-    <title>enroll</title>
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 40%;
-        }
+    <title>ENROLL</title>
+    <%- include layout/bootstrap %>
+  </head>
 
-        td,
-        th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
+  <body align=center>
+    <%- include layout/header %>
+      <ol class="breadcrumb" align=left>
+        <li><a href="/homepage">Homepage</a></li>
+        <li><a href="/subject">Subject</a></li>
+        <li class="active">
+          <%= data[0].Subject.subject_name %>
+        </li>
+      </ol>
 
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
-</head>
-<h1>
+  <h1>
     <%= data[0].Subject.subject_name %>
-</h1>
-
-<body align=center>
-
-
-    <table align=center>
+  </h1>
+      <table align=center class="table table-hover">
         <tr>
-            <th>NAMA</th>
-            <th>SCORE</th>
+          <th>NAMA</th>
+          <th>SCORE</th>
         </tr>
         <% data.forEach( cont => { %>
-            <tr align='center'>
-                <td>
-                    <%= cont.Student.first_name %>
-                        <%= cont.Student.last_name %>
-                </td>
-                <td>
-                    <% if (!cont.score) {%>
-                        <a href="/subject/enroll/<%= cont.SubjectId %>/scoring/<%= cont.StudentId %>">Give Score</a>
-                        <% } else {%>
-                            <%= cont.score%>
-                                <% } %>
-                </td>
-            </tr>
-            <% }) %>
-    </table>
-    <a href="/subject">BACK</a>
-</body>
+          <tr align='center'>
+            <% if(cont.Student !== null) { %>
+             <td>
+               <%= cont.Student.first_name %>
+               <%= cont.Student.last_name %>
+             </td>
+             <td>
+               <% if (!cont.score) {%>
+               <a href="/subject/enroll/<%= cont.SubjectId %>/scoring/<%= cont.StudentId %>">Give Score</a>
+               <% } else {%>
+               <%= cont.scoreAlphabet %>
+              <% } %>
+             </td>
+            <%} else {%>
+              <td>
+
+              </td>
+              <td>
+
+              </td>
+            <%}%>
+          </tr>
+          <% }) %>
+      </table>
+      <a href="/subject" class="btn btn-primary btn-lg active">BACK</a>
+  </body>
 
 </html>

@@ -1,56 +1,48 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+  <head>
     <meta charset="utf-8">
     <title>SUBJECT</title>
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
+    <%- include layout/bootstrap %>
+  </head>
 
-        td,
-        th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
-</head>
-
-<body align=center>
-    <table align=center>
+  <body>
+    <%- include layout/header %>
+      <ol class="breadcrumb" align=left>
+        <li><a href="/homepage">Homepage</a></li>
+        <li class="active">
+          Subject
+        </li>
+      </ol>
+      <table class="table table-hover">
         <tr>
-            <th>NAMA SUBJECT</th>
-            <th>TEACHER</th>
-            <th>ACTION</th>
+          <th>NAMA SUBJECT</th>
+          <th>TEACHER</th>
+          <th>ACTION</th>
         </tr>
         <% dataTcui.forEach( cont => { %>
-            <tr>
-                <td>
-                    <%= cont.subject_name %>
-                </td>
-                <td>
-                    <% for (let i = 0; i < cont.Teachers.length; i++) { %>
-                        <%= `${i +1}.` %>
-                            <%= cont.Teachers[i].first_name %>
-                                <%= cont.Teachers[i].last_name %> <br>
-                                    <% } %>
-                </td>
-                <td>
-                    <a href="/subject/enroll/<%= cont.id %>">Enrolled Students</a>
-                </td>
-            </tr>
-            <% }) %>
-    </table>
-    <br><br>
-    <a href="/">BACK</a>
-</body>
+          <tr>
+            <td>
+              <%= cont.subject_name %>
+            </td>
+            <td>
+              <% for (let i = 0; i < cont.Teachers.length; i++) { %>
+                <%= `${i +1}.` %>
+                  <%= cont.Teachers[i].first_name %>
+                    <%= cont.Teachers[i].last_name %> <br>
+                      <% } %>
+            </td>
+            <td>
+              <a href="/subject/enroll/<%= cont.id %>">Enrolled Students</a>
+            </td>
+          </tr>
+          <% }) %>
+      </table>
+      <br><br>
+      <div align="center">
+        <a href="/homepage" class="btn btn-primary btn-lg active">BACK</a
+      </div>
+  </body>
 
 </html>

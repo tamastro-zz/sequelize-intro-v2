@@ -1,7 +1,8 @@
 'use strict';
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var Subject = sequelize.define('Subject', {
-    subject_name: DataTypes.STRING
+    subject_name: DataTypes.STRING,
+    StudentId: DataTypes.INTEGER
   })
   Subject.associate = (models) => {
     Subject.hasMany(models.Teacher)

@@ -6,17 +6,17 @@ const db = require('../models');
 
 router.get('/', (req, res) => {
   db.Student.findAll({
-
-      order: [
-        ['first_name', 'ASC']
-      ]
+      order: [['first_name', 'ASC']]
     })
     .then(teach => {
       res.render('student', {
-        dataTcui: teach
+        dataTcui: teach,
+        role: req.session.user.role,
+        name: req.session.user.username
       })
     })
 })
+
 // router.post('/', (req, res) => {
 //
 // })
@@ -26,7 +26,9 @@ router.get('/add', (req, res) => {
     .then(teach => {
       res.render('add', {
         dataTcui: teach,
-        errs: req.query.errs
+        errs: req.query.errs,
+        role: req.session.user.role,
+        name: req.session.user.username
       })
     })
 })
@@ -57,7 +59,8 @@ router.get('/edit/:id', (req, res) => {
     .then(teach => {
       res.render('edit', {
         dataTcui: teach,
-        errs: req.query.errs
+        role: req.session.user.role,
+        name: req.session.user.username
       })
     })
 })
@@ -66,8 +69,8 @@ router.post('/edit/:id', (req, res) => {
   db.Student.update({
       first_name: `${req.body.depan}`,
       last_name: `${req.body.belakang}`,
-      full_name: `${req.body.depan} ${req.body.belakang}`,
       email: `${req.body.email}`,
+      createdAt: new Date(),
       updatedAt: new Date()
     }, {
       where: {
@@ -78,7 +81,7 @@ router.post('/edit/:id', (req, res) => {
       res.redirect('/student')
     })
     .catch(() => {
-      res.redirect(`/student/edit/${req.params.id}?errs=${err.errors[0].message}`)
+      res.redirect(`/student/edit/${req.params.id}`)
     })
 })
 
@@ -108,7 +111,9 @@ router.get('/addsubject/:id', (req, res) => {
           console.log(teach);
           res.render('SubStudent', {
             dataTcui: teach,
-            subs: sub
+            subs: sub,
+            role: req.session.user.role,
+            name: req.session.user.username
           })
         })
     })
